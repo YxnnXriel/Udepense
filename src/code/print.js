@@ -8,7 +8,7 @@ import {getDocs} from "firebase/firestore"
 import { depenseCollection } from "../api/firebase_collection";
 
 
-const Print = () => {
+export const Print = () => {
     
     const [depense, SetDepense] = React.useState([])
 
@@ -21,7 +21,7 @@ const Print = () => {
             )            
         }
         getDepense();
-    },[])
+    })
 
     const renderItem  = ({item,index}) => {
         return (
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
     },
     container:{
         flex:1,
-        marginTop : 80,
+        paddingTop : 80,
+        backgroundColor : COLOR.Blanc
     },
     button: {
         padding: 10,
@@ -98,5 +99,3 @@ const styles = StyleSheet.create({
     }
 
 })
-
-export default Print;

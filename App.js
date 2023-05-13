@@ -1,35 +1,91 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Add from './src/code/add';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import COLOR from './src/code/colors';
 import { NavPrint } from './src/code/nav_list';
+import { NavHome } from './src/code/nav_home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Add from './src/code/add';
+import { Home } from './src/code/home';
+
 
 export default function App() {
   const tab = createBottomTabNavigator();
 
   return (
-          <NavigationContainer>
+          <NavigationContainer >
               <tab.Navigator
+                independent= {true}
                 screenOptions={({route}) => ({
-                  tabBarIcon: ({focused, color, size}) => {
-                    let iconName
-
-                    if(route.name == "Add a spend") {iconName = "add-outline"}
-                    else if(route.name == "List") {iconName = "list-outline"}
-                    else if(route.name == "Home") {iconName = "home-outline"}
-                    else if(route.name == "About Us") {iconName = "create-outline"}
-
-                    return <Ionicons name={iconName} size={25} color={'#000'}/>
-                  }
+                  tabBarShowLabel:false,
+                  headerShown: false,
+                  tabBarStyle: {
+                    position:'absolute',
+                    bottom: 0,
+                    left: 0,
+                    elevation: 0,
+                    height: 90
+                  },
+                  tabBarHideOnKeyboard: true
                 })}
               >
-                <tab.Screen name="Home" component={Home}/>
-                <tab.Screen name="Add a spend" component={Add}/>
-                <tab.Screen name="List" component={Print}/>
-                <tab.Screen name="About Us" component={AboutUs}/>
+                <tab.Screen name="NavHome" component={NavHome} options={{
+                  tabBarIcon: ({focused}) => (
+                    <View style={{alignItems:'center', justifyContent:'center'}}>
+                        <Image 
+                            source={require('./src/images/homeIcon.png')} 
+                            resizeMode='contain'
+                            style={{
+                                tintColor: focused ? COLOR.Pink:COLOR.Black,
+                                width: 25,
+                                height:25
+                            }}
+                        />
+                        <Text 
+                            style={{
+                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                            }}
+                        >HOME</Text>
+                    </View>
+                ),
+                }}/>
+                <tab.Screen name="Add" component={Add} options={{
+                    tabBarIcon: ({focused}) => (
+                    <View style={{alignItems:'center', justifyContent:'center'}}>
+                        <Image 
+                            source={require('./src/images/addIcon.png')} 
+                            resizeMode='contain'
+                            style={{
+                                tintColor: focused ? COLOR.Pink:COLOR.Black
+                            }}
+                        />
+                        <Text 
+                            style={{
+                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                            }}
+                        >ADD</Text>
+                    </View>
+                  ),
+                }}/>
+                <tab.Screen name="OtherNav" component={NavPrint} options={{
+                    tabBarIcon: ({focused}) => (
+                    <View style={{alignItems:'center', justifyContent:'center'}}>
+                        <Image 
+                            source={require('./src/images/listIcon.png')} 
+                            resizeMode='contain'
+                            style={{
+                                tintColor: focused ? COLOR.Pink:COLOR.Black
+                            }}
+                        />
+                        <Text 
+                            style={{
+                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                            }}
+                        >LIST</Text>
+                    </View>
+                  ),
+                }}/>
+
               </tab.Navigator>
           </NavigationContainer>
     );

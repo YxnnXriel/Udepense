@@ -15,7 +15,7 @@ import { depenseCollection } from "../api/firebase_collection";
 import { addDoc } from "firebase/firestore";
 
 
-const Add = () => {
+const Add = ({navigation}) => {
 
     // Article, prix , Qte , Date , 
 
@@ -95,7 +95,8 @@ const Add = () => {
 const styles = StyleSheet.create({
     background : {
         paddingTop: 50,
-        height : '100%'
+        height : '100%',
+        backgroundColor : COLOR.Blanc,
     },
     inputText : {
         marginVertical: 15,

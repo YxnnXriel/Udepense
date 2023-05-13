@@ -7,8 +7,8 @@ export const Detail = ({navigation}) =>{
         <View style={styles.container}>
             <Text>Detail</Text>
         </View>
-    )
-};
+    );
+}
 
 
 const styles = StyleSheet.create({

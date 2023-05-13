@@ -6,7 +6,8 @@ const COLOR = {
     Pink : "#F06B6D",
     Purple : "#573B97",
     Gray : "#A3A3A1",
-    DarkPurple : "#301934"
+    DarkPurple : "#301934",
+    Black:'#000'
 }
 
 export default COLOR;
