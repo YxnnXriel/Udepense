@@ -6,8 +6,10 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Dimensions } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import { db } from "../api/firebase_api";
-import { setDoc, doc, Firestore, getDoc, getDocs } from "firebase/firestore";
+import { setDoc, doc, deleteDoc } from "firebase/firestore";
 import 'firebase/firestore';
+import firebase from 'firebase/app'
+import {collection} from "firebase/firestore"
 
 const datas = [
     { label: 'Nourriture', value: '1' },
@@ -79,11 +81,16 @@ export const Detail = ({navigation, route}) =>{
             alert('fill the gaps')
         }
     }
-o
+
 
     const Delete = async() => {
         const idExpense = data.datas.id
-        
+        await deleteDoc(doc(db, 'depenses', idExpense))
+            .then(()=> {
+                setShowDelete(false)
+                alert('deleted successfully')
+                navigation.navigate('Print')
+            }).catch((e)=> console.error(e))
     }   
 
     return(

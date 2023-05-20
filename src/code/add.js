@@ -57,7 +57,7 @@ const Add = ({navigation}) => {
                     prix: Number(Prix),
                     Date: Dates,
                     observation:String(Observation),
-                    categorie:String(value)    
+                    categorie:String(data[value-1].label)    
                 }
             )
             onChangeNom(null)
