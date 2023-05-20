@@ -2,8 +2,8 @@ import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Print } from './print';
 import { Detail }from './detail';
-
 import { NavigationContainer } from '@react-navigation/native';
+
 
 export const NavPrint = () => {
 
