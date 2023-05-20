@@ -8,7 +8,7 @@ import {getDocs} from "firebase/firestore"
 import { depenseCollection } from "../api/firebase_collection";
 
 
-export const Print = () => {
+export const Print = ({navigation}) => {
     
     const [depense, SetDepense] = React.useState([])
 
@@ -18,7 +18,7 @@ export const Print = () => {
             const data = await getDocs(depenseCollection);
             SetDepense(
                 data.docs.map((doc) => ({...doc.data(), id : doc.id}))
-            )            
+            )           
         }
         getDepense();
     })
@@ -30,10 +30,11 @@ export const Print = () => {
                     <View style={styles.base}>
                         <View>
                             <Text style={styles.name}> {item.designation} </Text>
+                            <Text style={styles.name}> {item.Date} </Text>
                         </View>
 
                         <View>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Detail', {datas:item})}>
                                 <Text style={styles.btnText}>Voir Plus</Text>
                             </TouchableOpacity>
                         </View>

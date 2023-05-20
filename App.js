@@ -7,88 +7,90 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Add from './src/code/add';
 import { Home } from './src/code/home';
-
+import DropdownComponent from './src/code/dropdown';
 
 export default function App() {
   const tab = createBottomTabNavigator();
 
+  {/* <DropdownComponent /> */}
   return (
-          <NavigationContainer >
-              <tab.Navigator
-                independent= {true}
-                screenOptions={({route}) => ({
-                  tabBarShowLabel:false,
-                  headerShown: false,
-                  tabBarStyle: {
-                    position:'absolute',
-                    bottom: 0,
-                    left: 0,
-                    elevation: 0,
-                    height: 90
-                  },
-                  tabBarHideOnKeyboard: true
-                })}
-              >
-                <tab.Screen name="NavHome" component={NavHome} options={{
-                  tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent:'center'}}>
-                        <Image 
-                            source={require('./src/images/homeIcon.png')} 
-                            resizeMode='contain'
-                            style={{
-                                tintColor: focused ? COLOR.Pink:COLOR.Black,
-                                width: 25,
-                                height:25
-                            }}
-                        />
-                        <Text 
-                            style={{
-                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
-                            }}
-                        >HOME</Text>
-                    </View>
-                ),
-                }}/>
-                <tab.Screen name="Add" component={Add} options={{
-                    tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent:'center'}}>
-                        <Image 
-                            source={require('./src/images/addIcon.png')} 
-                            resizeMode='contain'
-                            style={{
-                                tintColor: focused ? COLOR.Pink:COLOR.Black
-                            }}
-                        />
-                        <Text 
-                            style={{
-                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
-                            }}
-                        >ADD</Text>
-                    </View>
-                  ),
-                }}/>
-                <tab.Screen name="OtherNav" component={NavPrint} options={{
-                    tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent:'center'}}>
-                        <Image 
-                            source={require('./src/images/listIcon.png')} 
-                            resizeMode='contain'
-                            style={{
-                                tintColor: focused ? COLOR.Pink:COLOR.Black
-                            }}
-                        />
-                        <Text 
-                            style={{
-                                color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
-                            }}
-                        >LIST</Text>
-                    </View>
-                  ),
-                }}/>
+    
+    <NavigationContainer >
+      <tab.Navigator
+        independent= {true}
+        screenOptions={({route}) => ({
+          tabBarShowLabel:false,
+          headerShown: false,
+          tabBarStyle: {
+            position:'absolute',
+            bottom: 0,
+            left: 0,
+            elevation: 0,
+            height: 90
+          },
+          tabBarHideOnKeyboard: true
+        })}
+      >
+        <tab.Screen name="NavHome" component={NavHome} options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems:'center', justifyContent:'center'}}>
+                <Image 
+                    source={require('./src/images/homeIcon.png')} 
+                    resizeMode='contain'
+                    style={{
+                        tintColor: focused ? COLOR.Pink:COLOR.Black,
+                        width: 25,
+                        height:25
+                    }}
+                />
+                <Text 
+                    style={{
+                        color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                    }}
+                >HOME</Text>
+            </View>
+        ),
+        }}/>
+        <tab.Screen name="Add" component={Add} options={{
+            tabBarIcon: ({focused}) => (
+            <View style={{alignItems:'center', justifyContent:'center'}}>
+                <Image 
+                    source={require('./src/images/addIcon.png')} 
+                    resizeMode='contain'
+                    style={{
+                        tintColor: focused ? COLOR.Pink:COLOR.Black
+                    }}
+                />
+                <Text 
+                    style={{
+                        color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                    }}
+                >ADD</Text>
+            </View>
+          ),
+        }}/>
+        <tab.Screen name="OtherNav" component={NavPrint} options={{
+            tabBarIcon: ({focused}) => (
+            <View style={{alignItems:'center', justifyContent:'center'}}>
+                <Image 
+                    source={require('./src/images/listIcon.png')} 
+                    resizeMode='contain'
+                    style={{
+                        tintColor: focused ? COLOR.Pink:COLOR.Black
+                    }}
+                />
+                <Text 
+                    style={{
+                        color: focused ? COLOR.Pink:COLOR.Black, fontSize: 12
+                    }}
+                >LIST</Text>
+            </View>
+          ),
+        }}/>
 
-              </tab.Navigator>
-          </NavigationContainer>
-    );
+      </tab.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -31,7 +31,7 @@ export const Home = ({navigation}) => {
       <View style={styles.topHeaderr}>
         <Text style={{fontSize: 18, fontWeight: 'bold', color: COLOR.Black}}>Home</Text>
         <TouchableOpacity style={styles.buttondown} activeOpacity={0.2} onPress={() =>navigation.navigate('Add')} >
-          <Text style={{fontSize: 22, fontWeight: 'bold', color: COLOR.Pink, fontSize: 18}}>Add</Text>
+          <Text style={{fontSize: 22, fontWeight: 'bold', color: COLOR.Pink, fontSize: 18}}>Ajouter</Text>
           <Image 
             source={require('../images/addIcon.png')}
             tintColor={COLOR.Pink} 
@@ -75,9 +75,9 @@ export const Home = ({navigation}) => {
               yAxisSuffix="k"
               yAxisInterval={1} // optional, defaults to 1
               chartConfig={{
-                  backgroundColor: COLOR.White,
-                  backgroundGradientFrom: COLOR.White,
-                  backgroundGradientTo: COLOR.White,
+                  backgroundColor: "#fff",
+                  backgroundGradientFrom: "#fff",
+                  backgroundGradientTo: "#fff",
                   decimalPlaces: 2, // optional, defaults to 2dp
                   color: (opacity = 0.7) => `rgba(255,0, 0, ${opacity})`,
                   labelColor: (opacity = 1) => `rgba(0,0,0,${opacity})`,
